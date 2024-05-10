@@ -1,0 +1,22 @@
+server:
+  port: 9000
+
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
+
+spring:
+  jpa:      
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default-schema: public
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mytask
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
