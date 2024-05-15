@@ -1,16 +1,16 @@
 package com.todo.authorizationserver.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.todo.authorizationserver.repositories.UserRepository;
 
 @Service
-public class JpaUserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
+public class JpaUserDetailsService implements UserDetailsService {
 
-	@Autowired
+	
 	private final UserRepository userRepository;
 	
 	public JpaUserDetailsService(UserRepository userRepository) {
@@ -25,7 +25,6 @@ public class JpaUserDetailsService implements org.springframework.security.core.
 			return optUser.get();
 		} 
 		throw new UsernameNotFoundException(username +  " is not found");
-		
 	}
 
 }
