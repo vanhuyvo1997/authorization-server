@@ -8,10 +8,12 @@ logging:
         security: trace
 
 spring:
+  application:
+    name: authorization-server
   jpa:      
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         default-schema: public
