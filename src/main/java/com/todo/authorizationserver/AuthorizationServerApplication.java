@@ -39,7 +39,7 @@ public class AuthorizationServerApplication {
 				.scope("read").scope("write")
 				.scope(OidcScopes.OPENID).scope(OidcScopes.PROFILE)
 				.clientSettings(
-						ClientSettings.builder().requireAuthorizationConsent(true).requireProofKey(true).build())
+						ClientSettings.builder().requireAuthorizationConsent(true).build())
 				.build();
 		registeredClientRepository.save(mytaskClient);
 	}
