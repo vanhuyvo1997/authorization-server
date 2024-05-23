@@ -34,10 +34,10 @@ public class AuthorizationServerApplication {
 				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
-				.postLogoutRedirectUri("http://127.0.0.1:8080/")
+				.redirectUri("http://localhost:3000/api/auth/callback/mytask-client")
+				.postLogoutRedirectUri("http://localhost:3000")
 				.scope("read").scope("write")
-				.scope(OidcScopes.OPENID).scope(OidcScopes.PROFILE)
+				.scope(OidcScopes.OPENID).scope(OidcScopes.PROFILE).scope(OidcScopes.EMAIL)
 				.clientSettings(
 						ClientSettings.builder().requireAuthorizationConsent(true).build())
 				.build();
