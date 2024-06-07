@@ -1,7 +1,5 @@
 package com.todo.authorizationserver;
 
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,7 +27,8 @@ public class AuthorizationServerApplication {
 
 	@PostConstruct
 	public void initStartupClient() {
-		RegisteredClient mytaskClient = RegisteredClient.withId(UUID.randomUUID().toString()).clientId("mytask-client")
+		RegisteredClient mytaskClient = RegisteredClient.withId("mytask-client")
+				.clientId("mytask-client")
 				.clientSecret(passwordEncoder.encode("this-is-secret"))
 				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
@@ -37,7 +36,8 @@ public class AuthorizationServerApplication {
 				.redirectUri("http://localhost:3000/api/auth/callback/mytask-client")
 				.postLogoutRedirectUri("http://localhost:3000")
 				.scope("read").scope("write")
-				.scope(OidcScopes.OPENID).scope(OidcScopes.PROFILE).scope(OidcScopes.EMAIL)
+				.scope(OidcScopes.OPENID)
+				.scope(OidcScopes.PROFILE).scope(OidcScopes.EMAIL)
 				.clientSettings(
 						ClientSettings.builder().requireAuthorizationConsent(true).build())
 				.build();
